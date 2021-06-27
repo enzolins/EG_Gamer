@@ -33,8 +33,6 @@ public class BoasVindas implements ActionListener {
         button.setBounds(350,900,300,50);
         button.setText("Aperte aqui para iniciar!");
         button.setFocusable(false);
-        //button.setHorizontalAlignment(JButton.CENTER);
-        //button.setVerticalAlignment(JButton.BOTTOM);
         button.setVerticalTextPosition(JButton.CENTER);
         button.setHorizontalTextPosition(JButton.CENTER);
         button.setFont(new Font(null,Font.BOLD,25));
@@ -51,7 +49,6 @@ public class BoasVindas implements ActionListener {
         frame.setIconImage(logoIcon.getImage());
         frame.setLayout(null);
         frame.add(label);
-        //frame.add(button);
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
         
@@ -60,6 +57,7 @@ public class BoasVindas implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==button){
             frame.dispose();
+            new MenuPrincipal();
         }
         
     }
