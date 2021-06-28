@@ -11,6 +11,11 @@ public class MenuPrincipal implements ActionListener{
     private JButton button2 = new JButton();
     private JButton button3 = new JButton();
     private JButton button4 = new JButton();
+    private static Produtos produto = new Produtos();
+
+    public static Produtos retornarProduto(){
+       return produto;
+   }
 
 
     MenuPrincipal(){
@@ -65,6 +70,8 @@ public class MenuPrincipal implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==button1){
+            frame.setVisible(false);
+            new Cadastro();
         }
         
         if(e.getSource()==button2){
