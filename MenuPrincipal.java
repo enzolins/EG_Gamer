@@ -19,14 +19,25 @@ public class MenuPrincipal implements ActionListener{
 
 
     MenuPrincipal(){
+        //FIRST LOAD
+        try {
+            Carregar.carregarPreco();
+            Carregar.carregarQuantidade();
+            Carregar.carregarProdutos();
+            Carregar.carregarCategoria();
+        } catch (Exception w) {
+            w.printStackTrace();
+        }        
 
         ImageIcon logoIcon = new ImageIcon("EG Logo Official 2000.png");
+        ImageIcon cadastroIcon = new ImageIcon("Register.png");
 
         //BUTTONS
         button1.setBounds(10, 119, 190, 65);
         button1.setFocusable(false);
         button1.setFont(new Font(null,Font.BOLD,15));
         button1.setText("Cadastro");
+        button1.setIcon(cadastroIcon);
         button1.setHorizontalTextPosition(JButton.RIGHT);
         button1.addActionListener(this);
 
