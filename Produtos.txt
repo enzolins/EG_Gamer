@@ -1,2 +1,5 @@
+Cadeira
 Teclado
+Mesa
+Controle
 RTX 3090
