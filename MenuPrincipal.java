@@ -12,9 +12,13 @@ public class MenuPrincipal implements ActionListener{
     private JButton button3 = new JButton();
     private JButton button4 = new JButton();
     private static Produtos produto = new Produtos();
+    private static Cliente cliente = new Cliente();
 
     public static Produtos retornarProduto(){
        return produto;
+   }
+   public static Cliente retornarCliente(){
+    return cliente;
    }
 
 
@@ -25,6 +29,7 @@ public class MenuPrincipal implements ActionListener{
             Carregar.carregarQuantidade();
             Carregar.carregarProdutos();
             Carregar.carregarCategoria();
+            CarregarBytes.carregarClientes();
         } catch (Exception w) {
             w.printStackTrace();
         }        
@@ -32,6 +37,7 @@ public class MenuPrincipal implements ActionListener{
         ImageIcon logoIcon = new ImageIcon("EG Logo Official 2000.png");
         ImageIcon cadastroIcon = new ImageIcon("Register.png");
         ImageIcon venderIcon = new ImageIcon("Sell.png");
+        ImageIcon clienteIcon = new ImageIcon("Customer.png");
 
         //BUTTONS
         button1.setBounds(10, 119, 190, 65);
@@ -53,7 +59,11 @@ public class MenuPrincipal implements ActionListener{
         button3.setBounds(10, 276, 190, 65);
         button3.setFocusable(false);
         button3.setFont(new Font(null,Font.BOLD,15));
-        button3.setText("A ser Implementado");
+        button3.setText("Cliente");
+        button3.addActionListener(this);
+        button3.setIcon(clienteIcon);
+        button3.setIconTextGap(3);
+        button3.setHorizontalTextPosition(JButton.RIGHT);
 
         button4.setBounds(284, 276, 190, 65);
         button4.setFocusable(false);
@@ -90,6 +100,11 @@ public class MenuPrincipal implements ActionListener{
         if(e.getSource()==button2){
             frame.setVisible(false);
             new Vender();
+        }
+
+        if(e.getSource()==button3){
+            frame.setVisible(false);
+            new Clientela();
         }
     }
 
