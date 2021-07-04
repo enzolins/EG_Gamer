@@ -37,6 +37,7 @@ public class MenuPrincipal implements ActionListener{
         ImageIcon logoIcon = new ImageIcon("EG Logo Official 2000.png");
         ImageIcon cadastroIcon = new ImageIcon("Register.png");
         ImageIcon venderIcon = new ImageIcon("Sell.png");
+        ImageIcon listarIcon = new ImageIcon("List.png");
         ImageIcon clienteIcon = new ImageIcon("Customer.png");
 
         //BUTTONS
@@ -68,7 +69,11 @@ public class MenuPrincipal implements ActionListener{
         button4.setBounds(284, 276, 190, 65);
         button4.setFocusable(false);
         button4.setFont(new Font(null,Font.BOLD,15));
-        button4.setText("A ser Implementado");
+        button4.setText("Listagem");
+        button4.addActionListener(this);
+        button4.setIcon(listarIcon);
+        button4.setIconTextGap(3);
+        button4.setHorizontalTextPosition(JButton.RIGHT);
 
         
 
@@ -105,6 +110,11 @@ public class MenuPrincipal implements ActionListener{
         if(e.getSource()==button3){
             frame.setVisible(false);
             new Clientela();
+        }
+        
+        if(e.getSource()==button4){
+            frame.setVisible(false);
+            new MenuDeListagem();
         }
     }
 
