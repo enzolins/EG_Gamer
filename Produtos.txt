@@ -3,3 +3,4 @@ Teclado
 Mesa
 Controle
 RTX 3090
+Chave De Ativacao Windows
