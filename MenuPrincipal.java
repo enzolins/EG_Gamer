@@ -1,6 +1,6 @@
+
 import java.awt.Font;
 import java.awt.event.*;
-
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -13,14 +13,19 @@ public class MenuPrincipal implements ActionListener{
     private JButton button4 = new JButton();
     private static Produtos produto = new Produtos();
     private static Cliente cliente = new Cliente();
+    private static FuncionarioVendedor vendedor = new FuncionarioVendedor();
 
     public static Produtos retornarProduto(){
        return produto;
    }
+
    public static Cliente retornarCliente(){
-    return cliente;
+       return cliente;
    }
 
+   public static FuncionarioVendedor retornarVendedor(){
+       return vendedor;
+   }
 
     MenuPrincipal(){
         //FIRST LOAD
@@ -30,9 +35,12 @@ public class MenuPrincipal implements ActionListener{
             Carregar.carregarProdutos();
             Carregar.carregarCategoria();
             CarregarBytes.carregarClientes();
+            Carregar.carregarFuncionarios();
         } catch (Exception w) {
             w.printStackTrace();
-        }        
+        }
+        
+        
 
         ImageIcon logoIcon = new ImageIcon("EG Logo Official 2000.png");
         ImageIcon cadastroIcon = new ImageIcon("Register.png");
@@ -44,8 +52,9 @@ public class MenuPrincipal implements ActionListener{
         button1.setBounds(10, 119, 190, 65);
         button1.setFocusable(false);
         button1.setFont(new Font(null,Font.BOLD,15));
-        button1.setText("Cadastro");
+        button1.setText("Cadastrar");
         button1.setIcon(cadastroIcon);
+        button1.setIconTextGap(3);
         button1.setHorizontalTextPosition(JButton.RIGHT);
         button1.addActionListener(this);
 
@@ -53,8 +62,9 @@ public class MenuPrincipal implements ActionListener{
         button2.setFocusable(false);
         button2.setFont(new Font(null,Font.BOLD,15));
         button2.setText("Vender");
-        button2.setIcon(venderIcon);
         button2.addActionListener(this);
+        button2.setIcon(venderIcon);
+        button2.setIconTextGap(3);
         button2.setHorizontalTextPosition(JButton.RIGHT);
 
         button3.setBounds(10, 276, 190, 65);
@@ -99,7 +109,7 @@ public class MenuPrincipal implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==button1){
             frame.setVisible(false);
-            new Cadastro();
+            new MenuDeCadastro();
         }
         
         if(e.getSource()==button2){
@@ -111,7 +121,7 @@ public class MenuPrincipal implements ActionListener{
             frame.setVisible(false);
             new Clientela();
         }
-        
+
         if(e.getSource()==button4){
             frame.setVisible(false);
             new MenuDeListagem();
