@@ -22,6 +22,7 @@ public class MenuDeListagem implements ActionListener{
     MenuDeListagem(){
         ImageIcon logoIcon = new ImageIcon("EG Logo Official 2000.png");
         ImageIcon listarIcon = new ImageIcon("PC.png");
+        ImageIcon clienteIcon = new ImageIcon("Membros.png");
         
         //MENU
         frame.setJMenuBar(menuBar);
@@ -47,7 +48,11 @@ public class MenuDeListagem implements ActionListener{
         button2.setBounds(284, 119, 200, 65);
         button2.setFocusable(false);
         button2.setFont(new Font(null,Font.BOLD,15));
-        button2.setText("A ser Implementado");
+        button2.setText("Listar Clientes");
+        button2.addActionListener(this);
+        button2.setIcon(clienteIcon);
+        button2.setIconTextGap(3);
+        button2.setHorizontalTextPosition(JButton.RIGHT);
 
         button3.setBounds(10, 276, 200, 65);
         button3.setFocusable(false);
@@ -92,6 +97,8 @@ public class MenuDeListagem implements ActionListener{
         }
         
         if(e.getSource()==button2){
+            frame.setVisible(false);
+            new ListagemClientela();
         }
 
         if(e.getSource()==button3){
