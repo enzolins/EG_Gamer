@@ -5,6 +5,8 @@ import java.io.IOException;
 public class Salvar{
     private static Produtos produto = MenuPrincipal.retornarProduto();
     private static int i = produto.getSize();
+    private static FuncionarioVendedor funcionarioVendedor = MenuPrincipal.retornarVendedor();
+    private static int y = funcionarioVendedor.getSize();
     private static int z;
 
 
@@ -72,6 +74,52 @@ public static void salvarCategoria() throws IOException{
     }
     wr.close();
 
+}
+
+public static void salvarFuncionarios() throws IOException{
+    FileWriter nome = new FileWriter("NomeFuncionarios.txt");
+    FileWriter idade = new FileWriter("IdadeFuncionarios.txt");
+    FileWriter sexo = new FileWriter("SexoFuncionarios.txt");
+    
+    //NOME
+    z = 0;
+    while(z<y){
+        if(z==y-1){
+            nome.write(funcionarioVendedor.getNome(z));
+        }
+        else{
+            nome.write(funcionarioVendedor.getNome(z) + "\n");
+        }
+        z += 1;
+    }
+
+    //IDADE
+    z = 0;
+    while(z<y){
+        if(z==y-1){
+            idade.write("" + funcionarioVendedor.getIdade(z) );
+        }
+        else{
+            idade.write("" + funcionarioVendedor.getIdade(z) + "\n");
+        }
+        z += 1;
+    }
+
+    //SEXO
+    z = 0;
+    while(z<y){
+        if(z==y-1){
+            sexo.write(funcionarioVendedor.getSexo(z));
+        }
+        else{
+            sexo.write(funcionarioVendedor.getSexo(z) + "\n");
+        }
+        z += 1;
+    }
+
+    nome.close();
+    idade.close();
+    sexo.close();
 }
 
 }

@@ -5,6 +5,7 @@ import java.util.Scanner;
 
 public class Carregar {
     private static Produtos produto = MenuPrincipal.retornarProduto(); 
+    private static FuncionarioVendedor funcionarioVendedor = MenuPrincipal.retornarVendedor();
    
 
     public static void carregarProdutos() throws FileNotFoundException{
@@ -49,5 +50,37 @@ public class Carregar {
             produto.setCategoria(ler.nextLine());
         }
         ler.close();
+    }
+
+    public static void carregarFuncionarios() throws FileNotFoundException{
+        File nome = new File("NomeFuncionarios.txt");
+        File idade = new File("IdadeFuncionarios.txt");
+        File sexo = new File("SexoFuncionarios.txt");
+
+        Scanner lerNome = new Scanner(nome);
+        Scanner lerIdade = new Scanner(idade);
+        Scanner lerSexo = new Scanner(sexo);
+
+        //NOME
+        while (lerNome.hasNextLine()) {
+            funcionarioVendedor.setNome(lerNome.nextLine());
+        }
+
+        lerNome.close();
+
+        //IDADE
+        while (lerIdade.hasNextLine()) {
+            funcionarioVendedor.setIdade(Integer.parseInt(lerIdade.nextLine()));
+        }
+
+        lerIdade.close();
+
+        //SEXO
+        while (lerSexo.hasNextLine()) {
+            funcionarioVendedor.setSexo(lerSexo.nextLine());
+        }  
+        
+        lerSexo.close();
+
     }
 }
