@@ -1,16 +1,21 @@
+package Arquivos;
+
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
+import InterfaceGrafica.MenuPrincipal;
+import RegraDeNegocio.Cliente;
+
 public class CarregarBytes {
     private static Cliente cliente = MenuPrincipal.retornarCliente();
 
     public static void carregarClientes() throws IOException,FileNotFoundException{
-        BufferedReader brNome = new BufferedReader(new FileReader("NomeClientes.txt"));
-        BufferedReader brIdade = new BufferedReader(new FileReader("IdadeClientes.txt"));
-        BufferedReader brSexo = new BufferedReader(new FileReader("SexoClientes.txt"));
-        BufferedReader brStatus = new BufferedReader(new FileReader("StatusClientes.txt"));
+        BufferedReader brNome = new BufferedReader(new FileReader("BancoDeDados" + System.getProperty("file.separator")+"NomeClientes.txt"));
+        BufferedReader brIdade = new BufferedReader(new FileReader("BancoDeDados" + System.getProperty("file.separator")+"IdadeClientes.txt"));
+        BufferedReader brSexo = new BufferedReader(new FileReader("BancoDeDados" + System.getProperty("file.separator")+"SexoClientes.txt"));
+        BufferedReader brStatus = new BufferedReader(new FileReader("BancoDeDados" + System.getProperty("file.separator")+"StatusClientes.txt"));
 
         String i="";
         //NOME

@@ -1,3 +1,4 @@
+package InterfaceGrafica;
 
 
 
@@ -16,6 +17,10 @@ import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import RegraDeNegocio.ListarProdutos;
+import RegraDeNegocio.Produtos;
+import Arquivos.Salvar;
 
 
 public class Cadastro implements ActionListener {
@@ -48,7 +53,7 @@ public class Cadastro implements ActionListener {
     Cadastro(){
 
         //ICONS
-        ImageIcon logoIcon = new ImageIcon("EG Logo Official 2000.png");
+        ImageIcon logoIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 2000.png");
 
         //MENU
         

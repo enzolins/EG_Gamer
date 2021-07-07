@@ -1,3 +1,4 @@
+package RegraDeNegocio;
 public class Funcionario extends Pessoa{
     private String nome;
     private int idade;

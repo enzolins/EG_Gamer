@@ -1,3 +1,4 @@
+package InterfaceGrafica;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,6 +14,9 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JTextPane;
 import javax.swing.Timer;
+
+import RegraDeNegocio.Produtos;
+import Arquivos.Salvar;
 
 
 public class Vender implements ActionListener{
@@ -37,7 +41,7 @@ public class Vender implements ActionListener{
     Vender(){  
 
         //ICONS
-        ImageIcon logoIcon = new ImageIcon("EG Logo Official 2000.png");
+        ImageIcon logoIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 2000.png");
 
         //MENU
         

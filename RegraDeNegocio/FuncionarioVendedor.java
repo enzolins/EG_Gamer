@@ -1,3 +1,4 @@
+package RegraDeNegocio;
 import java.util.ArrayList;
 
 public class FuncionarioVendedor extends Funcionario implements Vendas{

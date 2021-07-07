@@ -1,9 +1,16 @@
+package InterfaceGrafica;
 
 import java.awt.Font;
 import java.awt.event.*;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+
+import Arquivos.Carregar;
+import Arquivos.CarregarBytes;
+import RegraDeNegocio.Cliente;
+import RegraDeNegocio.FuncionarioVendedor;
+import RegraDeNegocio.Produtos;
 
 public class MenuPrincipal implements ActionListener{
     private static JFrame frame = new JFrame();
@@ -42,11 +49,11 @@ public class MenuPrincipal implements ActionListener{
         
         
 
-        ImageIcon logoIcon = new ImageIcon("EG Logo Official 2000.png");
-        ImageIcon cadastroIcon = new ImageIcon("Register.png");
-        ImageIcon venderIcon = new ImageIcon("Sell.png");
-        ImageIcon listarIcon = new ImageIcon("List.png");
-        ImageIcon clienteIcon = new ImageIcon("Customer.png");
+        ImageIcon logoIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 2000.png");
+        ImageIcon cadastroIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"Register.png");
+        ImageIcon venderIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"Sell.png");
+        ImageIcon listarIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"List.png");
+        ImageIcon clienteIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"Customer.png");
 
         //BUTTONS
         button1.setBounds(10, 119, 190, 65);

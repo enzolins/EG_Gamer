@@ -1,3 +1,4 @@
+package InterfaceGrafica;
 import java.awt.Font;
 import java.awt.event.*;
 import java.awt.Color;
@@ -15,6 +16,11 @@ import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+
+import RegraDeNegocio.FuncionarioVendedor;
+import RegraDeNegocio.ListarVendedores;
+import Arquivos.Salvar;
+
 import javax.swing.JComboBox;
 
 public class CadastroDeVendedores implements ActionListener {
@@ -46,7 +52,7 @@ public class CadastroDeVendedores implements ActionListener {
 
     CadastroDeVendedores(){
         //ICONS
-        ImageIcon logoIcon = new ImageIcon("EG Logo Official 2000.png");
+        ImageIcon logoIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 2000.png");
         
         //MENU
         frame.setJMenuBar(menuBar);

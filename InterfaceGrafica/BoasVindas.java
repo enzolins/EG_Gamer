@@ -1,3 +1,4 @@
+package InterfaceGrafica;
 
 import java.awt.Font;
 import java.awt.Color;
@@ -12,10 +13,10 @@ public class BoasVindas implements ActionListener {
     private JLabel label = new JLabel();
     private JFrame frame = new JFrame();
     private JButton button = new JButton();
-    BoasVindas(){
+    public BoasVindas(){
         //Icons
-        ImageIcon logoIcon = new ImageIcon("EG Logo Official 2000.png");
-        ImageIcon labelImage = new ImageIcon("EG Logo Official 1000.png");
+        ImageIcon logoIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 2000.png");
+        ImageIcon labelImage = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 1000.png");
         //LABEL
         label.setText("Seja Bem Vindo");
         label.setFont(new Font("BankGothic Md BT",Font.BOLD,80));

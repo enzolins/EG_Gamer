@@ -1,3 +1,4 @@
+package InterfaceGrafica;
 
 import java.awt.Font;
 import java.awt.event.*;
@@ -20,9 +21,9 @@ public class MenuDeListagem implements ActionListener{
     private JMenuItem sair = new JMenuItem("Sair");
 
     MenuDeListagem(){
-        ImageIcon logoIcon = new ImageIcon("EG Logo Official 2000.png");
-        ImageIcon listarIcon = new ImageIcon("PC.png");
-        ImageIcon clienteIcon = new ImageIcon("Membros.png");
+        ImageIcon logoIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 2000.png");
+        ImageIcon listarIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"PC.png");
+        ImageIcon clienteIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"Membros.png");
         
         //MENU
         frame.setJMenuBar(menuBar);

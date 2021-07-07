@@ -1,3 +1,6 @@
+package RegraDeNegocio;
+import InterfaceGrafica.MenuPrincipal;
+
 public class ListarVendedores implements Listar{
     private FuncionarioVendedor funcionarioVendedor = MenuPrincipal.retornarVendedor();
     

@@ -1,7 +1,12 @@
+package Arquivos;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
+import InterfaceGrafica.MenuPrincipal;
+import RegraDeNegocio.FuncionarioVendedor;
+import RegraDeNegocio.Produtos;
 
 public class Carregar {
     private static Produtos produto = MenuPrincipal.retornarProduto(); 
@@ -9,7 +14,7 @@ public class Carregar {
    
 
     public static void carregarProdutos() throws FileNotFoundException{
-        File file = new File("Produtos.txt");
+        File file = new File("BancoDeDados" + System.getProperty("file.separator")+"Produtos.txt");
         Scanner ler = new Scanner(file);
         
 
@@ -20,7 +25,7 @@ public class Carregar {
     }
 
     public static void carregarPreco() throws FileNotFoundException{
-        File file2 = new File("Preco.txt");
+        File file2 = new File("BancoDeDados" + System.getProperty("file.separator")+"Preco.txt");
         Scanner ler2 = new Scanner(file2);
         
 
@@ -31,7 +36,7 @@ public class Carregar {
     }
 
     public static void carregarQuantidade() throws FileNotFoundException{
-        File file3 = new File("Quantidade.txt");
+        File file3 = new File("BancoDeDados" + System.getProperty("file.separator")+"Quantidade.txt");
         Scanner ler3 = new Scanner(file3);
         
 
@@ -42,7 +47,7 @@ public class Carregar {
     }
 
     public static void carregarCategoria() throws FileNotFoundException{
-        File file = new File("Categoria.txt");
+        File file = new File("BancoDeDados" + System.getProperty("file.separator")+"Categoria.txt");
         Scanner ler = new Scanner(file);
         
 
@@ -53,9 +58,9 @@ public class Carregar {
     }
 
     public static void carregarFuncionarios() throws FileNotFoundException{
-        File nome = new File("NomeFuncionarios.txt");
-        File idade = new File("IdadeFuncionarios.txt");
-        File sexo = new File("SexoFuncionarios.txt");
+        File nome = new File("BancoDeDados" + System.getProperty("file.separator")+"NomeFuncionarios.txt");
+        File idade = new File("BancoDeDados" + System.getProperty("file.separator")+"IdadeFuncionarios.txt");
+        File sexo = new File("BancoDeDados" + System.getProperty("file.separator")+"SexoFuncionarios.txt");
 
         Scanner lerNome = new Scanner(nome);
         Scanner lerIdade = new Scanner(idade);

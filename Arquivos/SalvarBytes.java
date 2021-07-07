@@ -1,19 +1,24 @@
+package Arquivos;
+
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.PrintStream;
 
+import InterfaceGrafica.MenuPrincipal;
+import RegraDeNegocio.Cliente;
+
 public class SalvarBytes {
     private static Cliente cliente = MenuPrincipal.retornarCliente();
     private static int i = cliente.getSize();
 
     public static void salvarCliente() throws IOException{
-        OutputStream os = new FileOutputStream("NomeClientes.txt");
+        OutputStream os = new FileOutputStream("BancoDeDados" + System.getProperty("file.separator")+"NomeClientes.txt");
         PrintStream ps = new PrintStream(os);
-        OutputStream os2 = new FileOutputStream("IdadeClientes.txt");
+        OutputStream os2 = new FileOutputStream("BancoDeDados" + System.getProperty("file.separator")+"IdadeClientes.txt");
         PrintStream ps2 = new PrintStream(os2);
-        OutputStream os3 = new FileOutputStream("SexoClientes.txt");
+        OutputStream os3 = new FileOutputStream("BancoDeDados" + System.getProperty("file.separator")+"SexoClientes.txt");
         PrintStream ps3 = new PrintStream(os3);
 
         ps.print(criarNome());
@@ -29,7 +34,7 @@ public class SalvarBytes {
     }
 
     public static void salvarStatus() throws IOException{
-        OutputStream os = new FileOutputStream("StatusClientes.txt");
+        OutputStream os = new FileOutputStream("BancoDeDados" + System.getProperty("file.separator")+"StatusClientes.txt");
         PrintStream ps = new PrintStream(os);
 
         ps.print(criarStatus());

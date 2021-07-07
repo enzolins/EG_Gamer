@@ -1,3 +1,6 @@
+package RegraDeNegocio;
+import InterfaceGrafica.MenuPrincipal;
+
 public class SelecionarCliente {
     private static Cliente cliente = MenuPrincipal.retornarCliente();
     private static int id=0;

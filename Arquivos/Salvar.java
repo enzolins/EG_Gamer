@@ -1,6 +1,11 @@
+package Arquivos;
 
 import java.io.FileWriter;
 import java.io.IOException;
+
+import InterfaceGrafica.MenuPrincipal;
+import RegraDeNegocio.FuncionarioVendedor;
+import RegraDeNegocio.Produtos;
 
 public class Salvar{
     private static Produtos produto = MenuPrincipal.retornarProduto();
@@ -11,7 +16,7 @@ public class Salvar{
 
 
     public static void salvarProdutos() throws IOException{
-        FileWriter wr =  new FileWriter("Produtos.txt");
+        FileWriter wr =  new FileWriter("BancoDeDados" + System.getProperty("file.separator")+"Produtos.txt");
         z = 0;
         while(z<i){
             if(z==i-1){
@@ -27,7 +32,7 @@ public class Salvar{
     }
 
     public static void salvarPreco() throws IOException{
-        FileWriter wr2 =  new FileWriter("Preco.txt");
+        FileWriter wr2 =  new FileWriter("BancoDeDados" + System.getProperty("file.separator")+"Preco.txt");
         z = 0;
         while(z<i){
             if(z==i-1){
@@ -45,7 +50,7 @@ public class Salvar{
 
 
 public static void salvarQuantidade() throws IOException{
-    FileWriter wr3 =  new FileWriter("Quantidade.txt");
+    FileWriter wr3 =  new FileWriter("BancoDeDados" + System.getProperty("file.separator")+"Quantidade.txt");
     z = 0;
     while(z<i){
         if(z==i-1){
@@ -61,7 +66,7 @@ public static void salvarQuantidade() throws IOException{
 }
 
 public static void salvarCategoria() throws IOException{
-    FileWriter wr =  new FileWriter("Categoria.txt");
+    FileWriter wr =  new FileWriter("BancoDeDados" + System.getProperty("file.separator")+"Categoria.txt");
     z = 0;
     while(z<i){
         if(z==i-1){
@@ -77,9 +82,9 @@ public static void salvarCategoria() throws IOException{
 }
 
 public static void salvarFuncionarios() throws IOException{
-    FileWriter nome = new FileWriter("NomeFuncionarios.txt");
-    FileWriter idade = new FileWriter("IdadeFuncionarios.txt");
-    FileWriter sexo = new FileWriter("SexoFuncionarios.txt");
+    FileWriter nome = new FileWriter("BancoDeDados" + System.getProperty("file.separator")+"NomeFuncionarios.txt");
+    FileWriter idade = new FileWriter("BancoDeDados" + System.getProperty("file.separator")+"IdadeFuncionarios.txt");
+    FileWriter sexo = new FileWriter("BancoDeDados" + System.getProperty("file.separator")+"SexoFuncionarios.txt");
     
     //NOME
     z = 0;

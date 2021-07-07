@@ -1,3 +1,4 @@
+package InterfaceGrafica;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -6,6 +7,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+
+import RegraDeNegocio.ListarProdutos;
+import Arquivos.Salvar;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.*;
@@ -27,7 +32,7 @@ public class ExibirEstoque implements ActionListener{
 
     ExibirEstoque(){
         //ICONS
-        ImageIcon logoIcon = new ImageIcon("EG Logo Official 2000.png");
+        ImageIcon logoIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 2000.png");
 
         //TEXT AREA
         textArea.setForeground(Color.BLACK);

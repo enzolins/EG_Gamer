@@ -1,3 +1,4 @@
+package InterfaceGrafica;
 import java.awt.Font;
 import java.awt.event.*;
 import java.awt.Color;
@@ -10,6 +11,10 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
+
+import RegraDeNegocio.ListarClientes;
+
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 
 
@@ -26,6 +31,7 @@ public class ListagemClientela implements ActionListener{
     private JScrollPane scroll = new JScrollPane();
     private JTextArea textArea = new JTextArea();
     private ListarClientes lista = new ListarClientes();
+    ImageIcon logoIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 2000.png");
 
     ListagemClientela(){
 
@@ -63,6 +69,7 @@ public class ListagemClientela implements ActionListener{
         frame.setSize(900,700);
         frame.setLayout(null);
         frame.setVisible(true);
+        frame.setIconImage(logoIcon.getImage());
         frame.setLocationRelativeTo(null);
         frame.add(comboBox);
         frame.add(scroll);

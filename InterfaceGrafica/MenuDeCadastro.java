@@ -1,3 +1,4 @@
+package InterfaceGrafica;
 
 import java.awt.Font;
 import java.awt.event.*;
@@ -20,9 +21,9 @@ public class MenuDeCadastro implements ActionListener{
 
     MenuDeCadastro(){
         //ICONS
-        ImageIcon logoIcon = new ImageIcon("EG Logo Official 2000.png");
-        ImageIcon produtosIcon = new ImageIcon("PC.png");
-        ImageIcon vendedoresIcon = new ImageIcon("Vendedor.png");
+        ImageIcon logoIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 2000.png");
+        ImageIcon produtosIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"PC.png");
+        ImageIcon vendedoresIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"Vendedor.png");
 
         //MENU
         frame.setJMenuBar(menuBar);

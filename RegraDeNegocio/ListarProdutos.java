@@ -1,3 +1,6 @@
+package RegraDeNegocio;
+import InterfaceGrafica.MenuPrincipal;
+
 public class ListarProdutos implements Listar{
 
     private Produtos produto =  MenuPrincipal.retornarProduto();

@@ -1,3 +1,6 @@
+package RegraDeNegocio;
+import InterfaceGrafica.MenuPrincipal;
+
 public class ListarClientes implements Listar{
 
     private Cliente cliente =  MenuPrincipal.retornarCliente();

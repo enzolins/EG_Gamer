@@ -1,3 +1,4 @@
+package RegraDeNegocio;
 
 public interface Listar {
 
