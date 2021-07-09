@@ -8,9 +8,11 @@ import java.io.PrintStream;
 
 import InterfaceGrafica.MenuPrincipal;
 import RegraDeNegocio.Cliente;
+import RegraDeNegocio.FuncionarioVendedor;
 
 public class SalvarBytes {
     private static Cliente cliente = MenuPrincipal.retornarCliente();
+    private static FuncionarioVendedor funcionarioVendedor = MenuPrincipal.retornarVendedor();
     private static int i = cliente.getSize();
 
     public static void salvarCliente() throws IOException{
@@ -98,5 +100,53 @@ public class SalvarBytes {
         }
 
         return baos.toString();
+    }
+
+    private static String criarVenda(){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(baos);
+        i = funcionarioVendedor.getVendasSize();
+        for(int z = 0; z<i; z++){
+            if(z==i-1)
+            ps.print(funcionarioVendedor.getVendas(z));
+            else
+            ps.println(funcionarioVendedor.getVendas(z));
+        }
+
+        return baos.toString();
+    }
+
+    public static void salvarVendas() throws IOException{
+        OutputStream os = new FileOutputStream("BancoDeDados" + System.getProperty("file.separator")+"RegistroDeVendas.txt");
+        PrintStream ps = new PrintStream(os);
+
+        ps.print(criarVenda());
+
+        ps.flush();
+        ps.close();
+    }
+
+    private static String criarCompra(){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream ps = new PrintStream(baos);
+        i = cliente.getComprasSize();
+        for(int z = 0; z<i; z++){
+            if(z==i-1)
+            ps.print(cliente.getCompras(z));
+            else
+            ps.println(cliente.getCompras(z));
+        }
+
+        return baos.toString();
+    }
+
+    public static void salvarCompras() throws IOException{
+        OutputStream os = new FileOutputStream("BancoDeDados" + System.getProperty("file.separator")+"RegistroDeCompras.txt");
+        PrintStream ps = new PrintStream(os);
+
+        ps.print(criarCompra());
+
+        ps.flush();
+        ps.close();
     }
 }

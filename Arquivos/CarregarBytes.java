@@ -7,9 +7,11 @@ import java.io.IOException;
 
 import InterfaceGrafica.MenuPrincipal;
 import RegraDeNegocio.Cliente;
+import RegraDeNegocio.FuncionarioVendedor;
 
 public class CarregarBytes {
     private static Cliente cliente = MenuPrincipal.retornarCliente();
+    private static FuncionarioVendedor funcionarioVendedor = MenuPrincipal.retornarVendedor();
 
     public static void carregarClientes() throws IOException,FileNotFoundException{
         BufferedReader brNome = new BufferedReader(new FileReader("BancoDeDados" + System.getProperty("file.separator")+"NomeClientes.txt"));
@@ -42,5 +44,27 @@ public class CarregarBytes {
         brIdade.close();
         brSexo.close();
         brStatus.close();
+    }
+
+    public static void carregarVendas() throws IOException, FileNotFoundException{
+        BufferedReader brVendas = new BufferedReader(new FileReader("BancoDeDados" + System.getProperty("file.separator")+"RegistroDeVendas.txt"));
+        String i="";
+        //NOME
+        while((i=brVendas.readLine()) !=null){
+            funcionarioVendedor.setVendas(i);
+        }
+
+        brVendas.close();
+    }
+
+    public static void carregarCompra() throws IOException, FileNotFoundException{
+        BufferedReader brCompra = new BufferedReader(new FileReader("BancoDeDados" + System.getProperty("file.separator")+"RegistroDeCompras.txt"));
+        String i="";
+        //NOME
+        while((i=brCompra.readLine()) !=null){
+            cliente.setCompras(i);;
+        }
+
+        brCompra.close();
     }
 }
