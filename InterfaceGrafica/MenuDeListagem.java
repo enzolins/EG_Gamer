@@ -24,6 +24,7 @@ public class MenuDeListagem implements ActionListener{
         ImageIcon logoIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 2000.png");
         ImageIcon listarIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"PC.png");
         ImageIcon clienteIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"Membros.png");
+        ImageIcon vendasIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"Sell.png");
         
         //MENU
         frame.setJMenuBar(menuBar);
@@ -58,12 +59,20 @@ public class MenuDeListagem implements ActionListener{
         button3.setBounds(10, 276, 200, 65);
         button3.setFocusable(false);
         button3.setFont(new Font(null,Font.BOLD,15));
-        button3.setText("A ser Implementado");
+        button3.setText("Listar Vendas");
+        button3.addActionListener(this);
+        button3.setIcon(vendasIcon);
+        button3.setIconTextGap(3);
+        button3.setHorizontalTextPosition(JButton.RIGHT);
 
         button4.setBounds(284, 276, 200, 65);
         button4.setFocusable(false);
         button4.setFont(new Font(null,Font.BOLD,15));
-        button4.setText("A ser Implementado");
+        button4.setText("Listar Compras");
+        button4.addActionListener(this);
+        button4.setIcon(listarIcon);
+        button4.setIconTextGap(3);
+        button4.setHorizontalTextPosition(JButton.RIGHT);
 
         //FRAME
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -103,9 +112,13 @@ public class MenuDeListagem implements ActionListener{
         }
 
         if(e.getSource()==button3){
+            frame.setVisible(false);
+            new ListagemDeVendas();
         }
 
         if(e.getSource()==button4){
+            frame.setVisible(false);
+            new ListagemDeCompras();
         }
     }
 
