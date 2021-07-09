@@ -1,17 +1,13 @@
 package RegraDeNegocio;
 import java.util.ArrayList;
 
-public class Cliente extends Pessoa{
+public class Cliente extends Pessoa implements Vendas{
 	
 	private ArrayList<String> nomeCliente = new ArrayList<String>();
     private ArrayList<Integer> idadeCliente = new ArrayList<Integer>();
     private ArrayList<String> sexoCliente = new ArrayList<String>();
     private ArrayList<Integer> status = new ArrayList<Integer>();
-	
-
-	//public Cliente(String nome, int idade, String sexo) {
-	//	super(nome, idade, sexo);
-	//}
+    private ArrayList<String> compras = new ArrayList<String>();
 
 	public void cadastroCliente(String nome, int idade, String sexo) {
         nomeCliente.add(nome);
@@ -58,6 +54,40 @@ public class Cliente extends Pessoa{
 
     public int getSize(){
         return nomeCliente.size();
+    }
+
+    public void setCompras(String comprasCarregadas){
+        compras.add(comprasCarregadas);
+    }
+
+    public String getCompras(int i){
+        return compras.get(i);
+    }
+
+    public int getComprasSize(){
+        return compras.size();
+    }
+
+    @Override
+    public void registrar(int iDdoCliente, String nomeProduto, String nomeDoVendedor) {
+        compras.add(iDdoCliente + "," + " comprou " + nomeProduto + " com o vendedor " + nomeDoVendedor);
+        
+    }
+
+    @Override
+    public String obter(int iDdoCliente) {
+        String linhas = "";
+        String [] iD;
+        String comprasCliente = "";
+        for(int y = 0; y<compras.size();y++){
+            linhas = compras.get(y);
+            iD = linhas.split(",");
+            if((Integer.parseInt(iD[0]))==iDdoCliente){
+                comprasCliente = comprasCliente + nomeCliente.get(Integer.parseInt(iD[0])) + iD[1] + "\n";
+            }
+            
+        }    
+        return comprasCliente;
     }
     
 }

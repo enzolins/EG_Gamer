@@ -5,6 +5,7 @@ public class FuncionarioVendedor extends Funcionario implements Vendas{
     private ArrayList<String> nomeVendedor = new ArrayList<String>();
     private ArrayList<Integer> idadeVendedor = new ArrayList<Integer>();
     private ArrayList<String> sexoVendedor = new ArrayList<String>();
+    private ArrayList<String> vendasVendedor = new ArrayList<String>();
 
     public void cadastrarVendedor(String nome, int idade, String sexo){
         nomeVendedor.add(nome);
@@ -40,15 +41,38 @@ public class FuncionarioVendedor extends Funcionario implements Vendas{
         return nomeVendedor.size();
     }
 
+    public void setVendas(String vendasCarregadas){
+        vendasVendedor.add(vendasCarregadas);
+    }
+
+    public String getVendas(int i){
+        return vendasVendedor.get(i);
+    }
+
+    public int getVendasSize(){
+        return vendasVendedor.size();
+    }
+
     @Override
     public void registrar(int idDoVendedor, String nomeProduto, String nomeCliente){
-       ;
+        vendasVendedor.add(idDoVendedor + "," + " vendeu " + nomeProduto + " para o cliente " + nomeCliente);
     }
 
 
     @Override
     public String obter(int idDoVendedor){
-        return null;
+        String linhas = "";
+        String [] iD;
+        String vendas = "";
+        for(int y = 0; y<vendasVendedor.size();y++){
+            linhas = vendasVendedor.get(y);
+            iD = linhas.split(",");
+            if((Integer.parseInt(iD[0]))==idDoVendedor){
+                vendas = vendas + nomeVendedor.get(Integer.parseInt(iD[0])) + iD[1] + "\n";
+            }
+            
+        }    
+        return vendas;
     }
     
 
