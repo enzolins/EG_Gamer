@@ -43,6 +43,8 @@ public class MenuPrincipal implements ActionListener{
             Carregar.carregarCategoria();
             CarregarBytes.carregarClientes();
             Carregar.carregarFuncionarios();
+            CarregarBytes.carregarVendas();
+            CarregarBytes.carregarCompra();
         } catch (Exception w) {
             w.printStackTrace();
         }
