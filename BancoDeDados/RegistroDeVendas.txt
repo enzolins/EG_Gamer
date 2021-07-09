@@ -1,0 +1,4 @@
+0, vendeu Controle para o cliente Guilherme
+0, vendeu Mesa para o cliente Guilherme
+2, vendeu Teclado para o cliente Enzo
+2, vendeu Cadeira para o cliente Enzo

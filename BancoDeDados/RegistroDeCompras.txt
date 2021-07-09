@@ -1,0 +1,4 @@
+0, comprou Controle com o vendedor Filiphe
+0, comprou Mesa com o vendedor Filiphe
+1, comprou Teclado com o vendedor Juliana
+1, comprou Cadeira com o vendedor Juliana
