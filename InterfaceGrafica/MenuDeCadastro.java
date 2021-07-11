@@ -17,13 +17,13 @@ public class MenuDeCadastro implements ActionListener{
     private JMenuBar menuBar = new JMenuBar();
     private JMenu fileMenu = new JMenu("Programa");
     private JMenuItem backItem = new JMenuItem("Voltar");
-    private JMenuItem sair = new JMenuItem("Sair");
 
     MenuDeCadastro(){
         //ICONS
         ImageIcon logoIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 2000.png");
         ImageIcon produtosIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"PC.png");
         ImageIcon vendedoresIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"Vendedor.png");
+        ImageIcon adicionarIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"Plus.png");
 
         //MENU
         frame.setJMenuBar(menuBar);
@@ -31,13 +31,11 @@ public class MenuDeCadastro implements ActionListener{
         menuBar.add(fileMenu);
 
         fileMenu.add(backItem);
-        fileMenu.add(sair);
 
         backItem.addActionListener(this);
-        sair.addActionListener(this);
 
         //BUTTONS
-        button1.setBounds(10, 119, 190, 65);
+        button1.setBounds(102,72,279,65);
         button1.setFocusable(false);
         button1.setFont(new Font(null,Font.BOLD,15));
         button1.setText("Cadastrar Produtos");
@@ -46,7 +44,7 @@ public class MenuDeCadastro implements ActionListener{
         button1.setHorizontalTextPosition(JButton.RIGHT);
         button1.addActionListener(this);
 
-        button2.setBounds(284, 119, 190, 65);
+        button2.setBounds(102,204,279,65);
         button2.setFocusable(false);
         button2.setFont(new Font(null,Font.BOLD,15));
         button2.setText("Cadastrar Funcionario");
@@ -55,20 +53,20 @@ public class MenuDeCadastro implements ActionListener{
         button2.setIconTextGap(3);
         button2.setHorizontalTextPosition(JButton.RIGHT);
 
-        button3.setBounds(10, 276, 190, 65);
+        button3.setBounds(102,331,279,65);
         button3.setFocusable(false);
         button3.setFont(new Font(null,Font.BOLD,15));
-        button3.setText("A ser Implementado");
+        button3.setText("Aumentar Estoque");
         button3.addActionListener(this);
-        // button3.setIcon(clienteIcon);
-        // button3.setIconTextGap(3);
-        // button3.setHorizontalTextPosition(JButton.RIGHT)
+        button3.setIcon(adicionarIcon);
+        button3.setIconTextGap(3);
+        button3.setHorizontalTextPosition(JButton.RIGHT);
 
 
         //FRAME
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.setTitle("Lojas EG - Controle de Estoque");
+        frame.setTitle("Lojas EG - Menu De Cadastro");
         frame.setSize(500,500);
         frame.setIconImage(logoIcon.getImage());
         frame.setLayout(null);
@@ -86,11 +84,6 @@ public class MenuDeCadastro implements ActionListener{
             frame.dispose();
             MenuPrincipal.retornarParaMenu();
         }
-
-        if(e.getSource()==sair){
-            frame.dispose();
-            System.exit(0);
-        }
         
         if(e.getSource()==button1){
             frame.setVisible(false);
@@ -100,6 +93,11 @@ public class MenuDeCadastro implements ActionListener{
         if(e.getSource()==button2){
             frame.setVisible(false);
             new CadastroDeVendedores();
+        }
+
+        if(e.getSource()==button3){
+            frame.setVisible(false);
+            new AdicionarEstoque();
         }
     }
 
