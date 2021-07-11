@@ -51,7 +51,7 @@ public class Produtos{
         quantidadeEmEstoque.set(i,quantidadeEmEstoque.get(i)-1);
     }
 
-    public void adicionarEstoque(int i){
-        quantidadeEmEstoque.set(i,quantidadeEmEstoque.get(i)+1);
+    public void adicionarEstoque(int i,int quantidade){
+        quantidadeEmEstoque.set(i,quantidadeEmEstoque.get(i)+quantidade);
     }
 }
