@@ -1,6 +1,9 @@
 package RegraDeNegocio;
 import java.util.ArrayList;
 
+import Exceptions.IdadeInvalida;
+import Exceptions.NomeInvalido;
+
 public class Cliente extends Pessoa implements Vendas{
 	
 	private ArrayList<String> nomeCliente = new ArrayList<String>();
@@ -9,11 +12,25 @@ public class Cliente extends Pessoa implements Vendas{
     private ArrayList<Integer> status = new ArrayList<Integer>();
     private ArrayList<String> compras = new ArrayList<String>();
 
-	public void cadastroCliente(String nome, int idade, String sexo) {
-        nomeCliente.add(nome);
-        idadeCliente.add(idade);
-        sexoCliente.add(sexo);
-        status.add(1);
+    private ChecarEntrada checar = new ChecarEntrada();
+
+	public void cadastroCliente(String nome, int idade, String sexo) throws NomeInvalido, IdadeInvalida{
+        if(checar.checarCaracteres(nome)>0 || checar.checarEspacos(nome)>0){
+            throw new NomeInvalido();
+        }
+        else{
+            if(checar.checarIdade(idade)>0){
+                throw new IdadeInvalida();
+            }
+            else{
+                nomeCliente.add(nome);
+                idadeCliente.add(idade);
+                sexoCliente.add(sexo);
+                status.add(1);
+            }
+
+        }
+
     }
 	
     public void mudarStatus(int i){

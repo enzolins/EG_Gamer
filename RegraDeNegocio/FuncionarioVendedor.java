@@ -1,16 +1,32 @@
 package RegraDeNegocio;
 import java.util.ArrayList;
 
+import Exceptions.IdadeInvalida;
+import Exceptions.NomeInvalido;
+
 public class FuncionarioVendedor extends Funcionario implements Vendas{
     private ArrayList<String> nomeVendedor = new ArrayList<String>();
     private ArrayList<Integer> idadeVendedor = new ArrayList<Integer>();
     private ArrayList<String> sexoVendedor = new ArrayList<String>();
     private ArrayList<String> vendasVendedor = new ArrayList<String>();
+    private ChecarEntrada checar = new ChecarEntrada();
 
-    public void cadastrarVendedor(String nome, int idade, String sexo){
-        nomeVendedor.add(nome);
-        idadeVendedor.add(idade);
-        sexoVendedor.add(sexo);
+	public void cadastrarVendedor(String nome, int idade, String sexo) throws NomeInvalido, IdadeInvalida{
+        if(checar.checarCaracteres(nome)>0 || checar.checarEspacos(nome)>0){
+            throw new NomeInvalido();
+        }
+        else{
+            if(checar.checarIdade(idade)>0){
+                throw new IdadeInvalida();
+            }
+            else{
+                nomeVendedor.add(nome);
+                idadeVendedor.add(idade);
+                sexoVendedor.add(sexo);
+            }
+
+        }
+
     }
 
     public void setNome(String nome){

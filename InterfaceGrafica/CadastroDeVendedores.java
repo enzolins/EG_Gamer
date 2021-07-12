@@ -19,7 +19,10 @@ import javax.swing.JTextField;
 
 import RegraDeNegocio.FuncionarioVendedor;
 import RegraDeNegocio.ListarVendedores;
+import RegraDeNegocio.MostrarMensagens;
 import Arquivos.Salvar;
+import Exceptions.IdadeInvalida;
+import Exceptions.NomeInvalido;
 
 import javax.swing.JComboBox;
 
@@ -171,7 +174,21 @@ public class CadastroDeVendedores implements ActionListener {
             String nome = text1.getText();
             int idade = Integer.parseInt(text2.getText());
             String sexo = String.valueOf(comboBox.getSelectedItem());
-            funcionarioVendedor.cadastrarVendedor(nome, idade, sexo);
+            try {
+                funcionarioVendedor.cadastrarVendedor(nome, idade, sexo);
+                text1.setText("");
+                text2.setText("");
+            } catch (NomeInvalido e1) {
+                text1.setText("");
+                text2.setText("");
+            } catch (IdadeInvalida e1) {
+                text1.setText("");
+                text2.setText("");
+            } catch(Exception w){
+                MostrarMensagens.erroGeral();
+                text1.setText("");
+                text2.setText("");
+            }
             
         }
 

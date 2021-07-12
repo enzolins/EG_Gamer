@@ -19,7 +19,10 @@ import javax.swing.JTextField;
 
 import RegraDeNegocio.Cliente;
 import RegraDeNegocio.ListarClientes;
+import RegraDeNegocio.MostrarMensagens;
 import Arquivos.SalvarBytes;
+import Exceptions.IdadeInvalida;
+import Exceptions.NomeInvalido;
 
 import javax.swing.JComboBox;
 
@@ -187,8 +190,23 @@ public class Clientela implements ActionListener {
             String nome = text1.getText();
             int idade = Integer.parseInt(text2.getText());
             String sexo = String.valueOf(comboBox.getSelectedItem());
-            cliente.cadastroCliente(nome,idade,sexo);
-            
+
+            try {
+                cliente.cadastroCliente(nome,idade,sexo);
+            } catch (NomeInvalido e1) {
+                text1.setText("");
+                text2.setText("");
+            } catch (IdadeInvalida e1) {
+                text1.setText("");
+                text2.setText("");
+            } catch(Exception e2){
+                MostrarMensagens.erroGeral();
+                text1.setText("");
+                text2.setText("");
+            }
+    
+            text1.setText("");
+            text2.setText("");  
         }
 
         if (e.getSource() == button2){

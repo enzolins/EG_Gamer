@@ -19,8 +19,12 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import RegraDeNegocio.ListarProdutos;
+import RegraDeNegocio.MostrarMensagens;
 import RegraDeNegocio.Produtos;
 import Arquivos.Salvar;
+import Exceptions.NomeInvalido;
+import Exceptions.PrecoInvalido;
+import Exceptions.QuantidadeInvalida;
 
 
 public class Cadastro implements ActionListener {
@@ -197,10 +201,30 @@ public class Cadastro implements ActionListener {
             double valor = Double.parseDouble(text2.getText());
             int quantidade = Integer.parseInt(text3.getText());
             String categoria = comboBox.getSelectedItem().toString();
-            produto.cadastrarProduto(nome, valor, quantidade, categoria);
-            text.setText("");
-            text2.setText("");
-            text3.setText("");
+            try {
+                produto.cadastrarProduto(nome, valor, quantidade, categoria);
+                text.setText("");
+                text2.setText("");
+                text3.setText("");
+            } catch (PrecoInvalido e1) {
+                text.setText("");
+                text2.setText("");
+                text3.setText("");
+            } catch (QuantidadeInvalida e1) {
+                text.setText("");
+                text2.setText("");
+                text3.setText("");
+            } catch (NomeInvalido e1){
+                text.setText("");
+                text2.setText("");
+                text3.setText("");
+            } catch (Exception w){
+                MostrarMensagens.erroGeral();
+                text.setText("");
+                text2.setText("");
+                text3.setText("");
+            }
+
         }
         if(e.getSource()==button2){
             textArea.setText("");

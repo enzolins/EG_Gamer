@@ -16,6 +16,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 
 import Arquivos.Salvar;
+import Exceptions.QuantidadeInvalida;
+import RegraDeNegocio.MostrarMensagens;
 import RegraDeNegocio.Produtos;
 
 public class AdicionarEstoque implements ActionListener{
@@ -136,9 +138,16 @@ public class AdicionarEstoque implements ActionListener{
             textEstoque.setText("Em Estoque: " + produtos.getQuantidade(index));
         }
         if(e.getSource()==button){
+            try {
                 produtos.adicionarEstoque(index, Integer.parseInt(textAdicionar.getText()));
                 textAdicionar.setText("");
                 textEstoque.setText("Em Estoque: " + produtos.getQuantidade(index));
+            } catch (NumberFormatException e1) {
+                MostrarMensagens.erroQuantidade();
+                textAdicionar.setText("");
+            } catch (QuantidadeInvalida e1) {
+                textAdicionar.setText("");
+            }
         }
         if(e.getSource()==exitItem1){
             frame.dispose();
