@@ -1,11 +1,13 @@
 package InterfaceGrafica;
 import java.awt.Font;
 import java.awt.event.*;
+
 import java.awt.Color;
 
 import java.awt.event.ActionEvent;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -19,6 +21,8 @@ import javax.swing.JComboBox;
 
 
 public class ListagemClientela implements ActionListener{
+    //ICON
+    ImageIcon logoIcon = new ImageIcon("Icones"+ System.getProperty("file.separator")+"EG Logo Official 2000.png");
 
 
     private static JFrame frame  = new JFrame();
@@ -27,11 +31,12 @@ public class ListagemClientela implements ActionListener{
     private JMenuBar menuBar = new JMenuBar();
     private JMenu fileMenu = new JMenu("Programa");
     private JMenuItem backItem = new JMenuItem("Voltar");
-    private JMenuItem sair = new JMenuItem("Sair"); 
+    private JMenuItem exitItem = new JMenuItem("Sair para Menu"); 
     private JScrollPane scroll = new JScrollPane();
     private JTextArea textArea = new JTextArea();
     private ListarClientes lista = new ListarClientes();
-    ImageIcon logoIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 2000.png");
+    private JLabel label = new JLabel();
+    private JLabel label2 = new JLabel();
 
     ListagemClientela(){
 
@@ -41,13 +46,24 @@ public class ListagemClientela implements ActionListener{
         menuBar.add(fileMenu);
 
         fileMenu.add(backItem);
-        fileMenu.add(sair);
+        fileMenu.add(exitItem);
 
         backItem.addActionListener(this);
-        sair.addActionListener(this);
+        exitItem.addActionListener(this);
+
+        //LABEL
+        label.setBounds(250, 11, 450, 49);
+        label.setText("LISTA DE CLIENTES");
+        label.setFont(new Font("Consolas",Font.BOLD,35));
+        label.setForeground(Color.BLACK);
+
+        label2.setBounds(55,105,250,57);
+        label2.setText("ESCOLHA A OPCAO:");
+        label2.setFont(new Font("Consolas",Font.BOLD,25));
+        label2.setForeground(Color.BLACK);
 
         //COMBO BOX
-        comboBox.setBounds(300, 49, 230, 57);
+        comboBox.setBounds(320, 100, 230, 57);
         comboBox.setForeground(Color.BLACK);
         comboBox.setFont(new Font("Consolas",Font.BOLD,25));
         comboBox.addActionListener(this);
@@ -65,13 +81,15 @@ public class ListagemClientela implements ActionListener{
         //FRAME
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.setTitle("Lojas EG - Controle da Clientela");
+        frame.setTitle("Lojas EG - Listagem de Clientes");
         frame.setSize(900,700);
+        frame.setIconImage(logoIcon.getImage());
         frame.setLayout(null);
         frame.setVisible(true);
-        frame.setIconImage(logoIcon.getImage());
         frame.setLocationRelativeTo(null);
         frame.add(comboBox);
+        frame.add(label);
+        frame.add(label2);
         frame.add(scroll);
     }
 
@@ -82,9 +100,9 @@ public class ListagemClientela implements ActionListener{
             MenuDeListagem.retornarParaMenuDeListagem();
         }
 
-        if(e.getSource()==sair){
+        if(e.getSource()==exitItem){
             frame.dispose();
-            System.exit(0);
+            MenuPrincipal.retornarParaMenu();
         }
         if(e.getSource()==comboBox){
             int escolha = comboBox.getSelectedIndex();
@@ -105,6 +123,4 @@ public class ListagemClientela implements ActionListener{
             }
         }
     }
-
-
 }

@@ -17,15 +17,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import RegraDeNegocio.Cliente;
-import RegraDeNegocio.ListarClientes;
-import RegraDeNegocio.MostrarMensagens;
 import Arquivos.SalvarBytes;
 import Exceptions.IdadeInvalida;
 import Exceptions.NomeInvalido;
+import RegraDeNegocio.Cliente;
+import RegraDeNegocio.ListarClientes;
+import RegraDeNegocio.MostrarMensagens;
 
 import javax.swing.JComboBox;
-
 public class Clientela implements ActionListener {
     private static JFrame frame  = new JFrame();
     private JButton button = new JButton();
@@ -46,11 +45,10 @@ public class Clientela implements ActionListener {
     private JMenu fileMenu = new JMenu("Programa");
     private JMenu ArqMenu = new JMenu("Arquivo");
     private JMenuItem backItem = new JMenuItem("Voltar"); 
-    private JMenuItem sair = new JMenuItem("Sair"); 
-    private JMenuItem loadItem = new JMenuItem("Carregar");
     private JMenuItem saveItem = new JMenuItem("Salvar");
     private Cliente cliente =  MenuPrincipal.retornarCliente();
     private ListarClientes listas = new ListarClientes();
+    
 
     Clientela(){
 
@@ -62,16 +60,14 @@ public class Clientela implements ActionListener {
         menuBar.add(ArqMenu);
         menuBar.add(fileMenu);
 
-        ArqMenu.add(loadItem);
         ArqMenu.add(saveItem);
         
         fileMenu.add(backItem);
-        fileMenu.add(sair);
 
         backItem.addActionListener(this);
-        sair.addActionListener(this);
 
-        backItem.setMnemonic(KeyEvent.VK_A);
+        backItem.setMnemonic(KeyEvent.VK_V);
+        saveItem.setMnemonic(KeyEvent.VK_S);
 
 
         //LABEL 1
@@ -138,12 +134,13 @@ public class Clientela implements ActionListener {
         //TEXT AREA
         textArea.setForeground(Color.BLACK);
         textArea.setFont(new Font("Consolas",Font.PLAIN,20));
+        textArea.setEditable(false);
 
         //SCROLL PANE
         scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scroll.setViewportView(textArea);
-        scroll.setVisible(false);
+        scroll.setVisible(true);
         scroll.setBounds(150,310,730,200);
 
         //COMBO BOX 1 
@@ -154,9 +151,8 @@ public class Clientela implements ActionListener {
         comboBox.setVisible(true);
         comboBox.setFont(new Font("Consolas",Font.PLAIN,15));
         comboBox.addActionListener(this);
-        
 
-        //FRAME
+         //FRAME
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setTitle("Lojas EG - Controle da Clientela");
@@ -177,42 +173,35 @@ public class Clientela implements ActionListener {
         frame.add(text3);
         frame.add(scroll);
         frame.add(comboBox);
-        //frame.add(comboBox2);
-
     }
 
     
     @Override
     public void actionPerformed(ActionEvent e) {
        
-
-        if (e.getSource() == button){
-            String nome = text1.getText();
-            int idade = Integer.parseInt(text2.getText());
-            String sexo = String.valueOf(comboBox.getSelectedItem());
-
-            try {
-                cliente.cadastroCliente(nome,idade,sexo);
-            } catch (NomeInvalido e1) {
-                text1.setText("");
-                text2.setText("");
-            } catch (IdadeInvalida e1) {
-                text1.setText("");
-                text2.setText("");
-            } catch(Exception e2){
-                MostrarMensagens.erroGeral();
-                text1.setText("");
-                text2.setText("");
+            if (e.getSource() == button){
+                String nome = text1.getText();
+                int idade = Integer.parseInt(text2.getText());
+                String sexo = String.valueOf(comboBox.getSelectedItem());
+                try {
+                    cliente.cadastroCliente(nome,idade,sexo);
+                    text1.setText("");
+                    text2.setText("");  
+                } catch (NomeInvalido e1) {
+                    text1.setText("");
+                    text2.setText("");
+                } catch (IdadeInvalida e1) {
+                    text1.setText("");
+                    text2.setText("");
+                } catch(Exception e2){
+                    MostrarMensagens.erroGeral();
+                    text1.setText("");
+                    text2.setText("");
+                }           
             }
-    
-            text1.setText("");
-            text2.setText("");  
-        }
 
         if (e.getSource() == button2){
             textArea.setText("");
-            textArea.setEditable(true);
-            scroll.setVisible(true);
             listas.listarTodos();
             textArea.append(listas.getSaida());
             textArea.setEditable(false);
@@ -221,10 +210,6 @@ public class Clientela implements ActionListener {
         if(e.getSource()==backItem){
             frame.dispose();
             MenuPrincipal.retornarParaMenu();
-        }
-
-        if(e.getSource() == sair){
-            System.exit(0);
         }
 
 

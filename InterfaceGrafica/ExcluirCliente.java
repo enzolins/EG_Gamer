@@ -3,7 +3,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -19,23 +21,25 @@ import RegraDeNegocio.SelecionarCliente;
 
 public class ExcluirCliente implements ActionListener{
     private JFrame frame = new JFrame();
-    private JButton button3 = new JButton();
+    private JButton button = new JButton();
     private JLabel label1 = new JLabel();
     private JComboBox<String> comboBox;
     private Cliente cliente = MenuPrincipal.retornarCliente();
-    private String[] opcoes = new String[cliente.getSize()];
     private ListarClientes listas = new ListarClientes();
+    private String[] opcoes = new String[listas.getDisponiveis()];
     private int i=0;
     private JMenuBar menuBar = new JMenuBar();
     private JMenu ArqMenu = new JMenu("Arquivo");
     private JMenu fileMenu = new JMenu("Programa");
     private JMenuItem exitItem1 = new JMenuItem("Sair para Menu");
     private JMenuItem backItem1 = new JMenuItem("Voltar");
-    private JMenuItem loadItem = new JMenuItem("Carregar");
     private JMenuItem saveItem = new JMenuItem("Salvar");
+    private ArrayList <Integer> listaDeDisponiveis = new ArrayList<>();
 
 
     ExcluirCliente(){
+        //ICON
+        ImageIcon logoIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 2000.png");
 
         //MENU
         frame.setJMenuBar(menuBar);
@@ -43,7 +47,6 @@ public class ExcluirCliente implements ActionListener{
         menuBar.add(ArqMenu);
         menuBar.add(fileMenu);
         
-        ArqMenu.add(loadItem);
         ArqMenu.add(saveItem);
 
         fileMenu.add(backItem1);
@@ -55,28 +58,26 @@ public class ExcluirCliente implements ActionListener{
         saveItem.addActionListener(this);
       
 
-        exitItem1.setMnemonic(KeyEvent.VK_A);
+        exitItem1.setMnemonic(KeyEvent.VK_S);
         backItem1.setMnemonic(KeyEvent.VK_V);
 
         //BUTTON 3
-        button3.setBounds(500,100,113,49);
-        button3.setFocusable(false);
-        button3.setFont(new Font(null,Font.BOLD,15));
-        button3.setText("Excluir");
-        button3.setHorizontalTextPosition(JButton.RIGHT);
-        button3.addActionListener(this);
+        button.setBounds(500,100,113,49);
+        button.setFocusable(false);
+        button.setFont(new Font(null,Font.BOLD,15));
+        button.setText("Excluir");
+        button.setHorizontalTextPosition(JButton.RIGHT);
+        button.addActionListener(this);
 
-        //COMBO BOX 
-        
         int z;
         for (z=0; z<cliente.getSize();z++){
             if(cliente.getStatus(z)==1){
-                opcoes[i] = cliente.getNome(z);
-                i +=1;
+                listaDeDisponiveis.add(z);
             }
         }
-        i=0;
-        z=0;
+        for(i = 0; i<listaDeDisponiveis.size();i++){
+            opcoes[i] = cliente.getNome(listaDeDisponiveis.get(i));
+        }
         comboBox = new JComboBox<String>(opcoes);
         comboBox.setBounds(30,100,400,49);
         comboBox.setVisible(true);
@@ -96,21 +97,18 @@ public class ExcluirCliente implements ActionListener{
         frame.setTitle("Lojas EG - Excluir Clientes");
         frame.setSize(700,400);
         frame.setLayout(null);
+        frame.setIconImage(logoIcon.getImage());
         frame.setVisible(true);
         frame.setLocationRelativeTo(null);
-        frame.add(button3);
+        frame.add(button);
         frame.add(comboBox);
         frame.add(label1);
-
-
-
-
     }
 
     @Override
     public void actionPerformed(ActionEvent e){
-        
-        if(e.getSource() == button3){
+    
+        if(e.getSource() == button){
             cliente.mudarStatus(SelecionarCliente.retornarIdDoCliente(comboBox.getSelectedItem().toString()));
             comboBox.removeItem(comboBox.getSelectedItem());
             listas.listarExcluidos();

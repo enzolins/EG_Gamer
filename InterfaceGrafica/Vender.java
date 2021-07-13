@@ -29,6 +29,7 @@ public class Vender implements ActionListener{
     private JLabel labelComboboxCliente = new JLabel();
     private JLabel labelComboboxProduto = new JLabel();
     private JLabel labelComboboxVendedor = new JLabel();
+    private JLabel labelTitulo = new JLabel();
     private JLabel labelPreco = new JLabel();
     private JLabel labelQuantidade = new JLabel();
     private JButton button1 =  new JButton();
@@ -36,8 +37,7 @@ public class Vender implements ActionListener{
     private JMenu fileMenu = new JMenu("Arquivo");
     private JMenu programMenu = new JMenu("Programa");
     private JMenuItem backItem = new JMenuItem("Voltar");
-    private JMenuItem exiItem = new JMenuItem("Sair");
-    private JMenuItem loadItem = new JMenuItem("Carregar");
+    private JMenuItem exiItem = new JMenuItem("Sair para Menu");
     private JMenuItem saveItem = new JMenuItem("Salvar");
     private JComboBox<String> comboBoxProduto;
     private JComboBox<String> comboBoxVendedor;
@@ -56,7 +56,7 @@ public class Vender implements ActionListener{
     Vender(){  
 
         //ICONS
-        ImageIcon logoIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 2000.png");
+        ImageIcon logoIcon = new ImageIcon("Icones"+ System.getProperty("file.separator")+"EG Logo Official 2000.png");
 
         //MENU
         
@@ -66,18 +66,15 @@ public class Vender implements ActionListener{
         menuBar.add(programMenu);
         menuBar.setFocusable(false);
 
-        fileMenu.add(loadItem);
         fileMenu.add(saveItem);
 
         programMenu.add(backItem);
         programMenu.add(exiItem);
         
-        loadItem.addActionListener(this);
         saveItem.addActionListener(this);
         backItem.addActionListener(this);
         exiItem.addActionListener(this);
 
-        loadItem.setMnemonic(KeyEvent.VK_C);
         saveItem.setMnemonic(KeyEvent.VK_S);
         backItem.setMnemonic(KeyEvent.VK_V);
         exiItem.setMnemonic(KeyEvent.VK_S);
@@ -173,12 +170,17 @@ public class Vender implements ActionListener{
         labelQuantidade.setHorizontalAlignment(JLabel.CENTER);
         labelQuantidade.setForeground(Color.BLACK);
 
+        labelTitulo.setBounds(84,11,375,60);
+        labelTitulo.setText("VENDA DE PRODUTOS");
+        labelTitulo.setFont(new Font("Consolas",Font.BOLD,35));
+        labelTitulo.setForeground(Color.BLACK);
+
         
 
         //FRAME
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.setTitle("Lojas EG - Controle de Estoque");
+        frame.setTitle("Lojas EG - Vender");
         frame.setSize(500,600);
         frame.setIconImage(logoIcon.getImage());
         frame.setLayout(null);
@@ -196,6 +198,7 @@ public class Vender implements ActionListener{
         frame.add(labelComboboxProduto);
         frame.add(labelPreco);
         frame.add(labelQuantidade);
+        frame.add(labelTitulo);
     }
 
     @Override
@@ -240,11 +243,7 @@ public class Vender implements ActionListener{
             label.setVisible(false);
         }
 
-        if(e.getSource()==loadItem){
-            System.out.println("CARREGANDO!!!");
-        }
         if(e.getSource()==saveItem){
-            System.out.println("SALVANDO!!!");
             try {
                 Salvar.salvarQuantidade();
                 SalvarBytes.salvarVendas();
@@ -258,9 +257,8 @@ public class Vender implements ActionListener{
            MenuPrincipal.retornarParaMenu();
         }
         if(e.getSource()==exiItem){
-            System.exit(0);
+            MenuPrincipal.retornarParaMenu();
          }        
     }
     
 }
-

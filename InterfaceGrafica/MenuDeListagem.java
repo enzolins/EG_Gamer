@@ -18,13 +18,14 @@ public class MenuDeListagem implements ActionListener{
     private JMenuBar menuBar = new JMenuBar();
     private JMenu fileMenu = new JMenu("Programa");
     private JMenuItem backItem = new JMenuItem("Voltar");
-    private JMenuItem sair = new JMenuItem("Sair");
+    private JMenuItem exitItem = new JMenuItem("Sair para Menu");
 
     MenuDeListagem(){
-        ImageIcon logoIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 2000.png");
-        ImageIcon listarIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"PC.png");
-        ImageIcon clienteIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"Membros.png");
-        ImageIcon vendasIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"Sell.png");
+        ImageIcon logoIcon = new ImageIcon("Icones"+ System.getProperty("file.separator")+"EG Logo Official 2000.png");
+        ImageIcon listarIcon = new ImageIcon("Icones"+ System.getProperty("file.separator")+"PC.png");
+        ImageIcon clienteIcon = new ImageIcon("Icones"+ System.getProperty("file.separator")+"Membros.png");
+        ImageIcon vendasIcon = new ImageIcon("Icones"+ System.getProperty("file.separator")+"Money.png");
+        ImageIcon comprasIcon = new ImageIcon("Icones"+ System.getProperty("file.separator")+"Bag.png");
         
         //MENU
         frame.setJMenuBar(menuBar);
@@ -32,10 +33,10 @@ public class MenuDeListagem implements ActionListener{
         menuBar.add(fileMenu);
 
         fileMenu.add(backItem);
-        fileMenu.add(sair);
+        fileMenu.add(exitItem);
 
         backItem.addActionListener(this);
-        sair.addActionListener(this);
+        exitItem.addActionListener(this);
 
         //BUTTONS
         button1.setBounds(10, 119, 200, 65);
@@ -47,7 +48,7 @@ public class MenuDeListagem implements ActionListener{
         button1.setHorizontalTextPosition(JButton.RIGHT);
         button1.addActionListener(this);
 
-        button2.setBounds(284, 119, 200, 65);
+        button2.setBounds(275, 119, 200, 65);
         button2.setFocusable(false);
         button2.setFont(new Font(null,Font.BOLD,15));
         button2.setText("Listar Clientes");
@@ -65,19 +66,19 @@ public class MenuDeListagem implements ActionListener{
         button3.setIconTextGap(3);
         button3.setHorizontalTextPosition(JButton.RIGHT);
 
-        button4.setBounds(284, 276, 200, 65);
+        button4.setBounds(275, 276, 200, 65);
         button4.setFocusable(false);
         button4.setFont(new Font(null,Font.BOLD,15));
         button4.setText("Listar Compras");
         button4.addActionListener(this);
-        button4.setIcon(listarIcon);
+        button4.setIcon(comprasIcon);
         button4.setIconTextGap(3);
         button4.setHorizontalTextPosition(JButton.RIGHT);
 
         //FRAME
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.setTitle("Lojas EG - Controle de Estoque");
+        frame.setTitle("Lojas EG - Menu de Listagem");
         frame.setSize(500,500);
         frame.setIconImage(logoIcon.getImage());
         frame.setLayout(null);
@@ -97,9 +98,9 @@ public class MenuDeListagem implements ActionListener{
             MenuPrincipal.retornarParaMenu();
         }
 
-        if(e.getSource()==sair){
+        if(e.getSource()==exitItem){
             frame.dispose();
-            System.exit(0);
+            MenuPrincipal.retornarParaMenu();
         }
         if(e.getSource()==button1){
             frame.setVisible(false);

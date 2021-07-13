@@ -51,11 +51,11 @@ public class MenuPrincipal implements ActionListener{
         
         
 
-        ImageIcon logoIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 2000.png");
-        ImageIcon cadastroIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"Register.png");
-        ImageIcon venderIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"Sell.png");
-        ImageIcon listarIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"List.png");
-        ImageIcon clienteIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"Customer.png");
+        ImageIcon logoIcon = new ImageIcon("Icones"+ System.getProperty("file.separator")+"EG Logo Official 2000.png");
+        ImageIcon cadastroIcon = new ImageIcon("Icones"+ System.getProperty("file.separator")+"Register.png");
+        ImageIcon venderIcon = new ImageIcon("Icones"+ System.getProperty("file.separator")+"Sell.png");
+        ImageIcon listarIcon = new ImageIcon("Icones"+ System.getProperty("file.separator")+"List.png");
+        ImageIcon clienteIcon = new ImageIcon("Icones"+ System.getProperty("file.separator")+"Customer.png");
 
         //BUTTONS
         button1.setBounds(10, 119, 190, 65);
@@ -101,7 +101,7 @@ public class MenuPrincipal implements ActionListener{
         //FRAME
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.setTitle("Lojas EG - Controle de Estoque");
+        frame.setTitle("Lojas EG - Menu Principal");
         frame.setSize(500,500);
         frame.setIconImage(logoIcon.getImage());
         frame.setLayout(null);

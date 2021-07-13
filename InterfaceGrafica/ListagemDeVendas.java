@@ -5,7 +5,12 @@ import java.awt.Color;
 
 import java.awt.event.ActionEvent;
 
+
+
+//import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+//import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -26,15 +31,17 @@ public class ListagemDeVendas implements ActionListener{
     private JMenuBar menuBar = new JMenuBar();
     private JMenu fileMenu = new JMenu("Programa");
     private JMenuItem backItem = new JMenuItem("Voltar");
-    private JMenuItem sair = new JMenuItem("Sair"); 
+    private JMenuItem exitItem = new JMenuItem("Sair para Menu"); 
     private JScrollPane scroll = new JScrollPane();
     private JTextArea textArea = new JTextArea();
     private FuncionarioVendedor funcionarioVendedor = MenuPrincipal.retornarVendedor();
     private String [] opcoes = new String[funcionarioVendedor.getSize()+1];
+    private JLabel label = new JLabel();
+    private JLabel label2 = new JLabel();
 
     ListagemDeVendas(){
         //ICON
-        ImageIcon logoIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 2000.png");
+        ImageIcon logoIcon = new ImageIcon("Icones"+ System.getProperty("file.separator")+"EG Logo Official 2000.png");
 
         //MENU
         frame.setJMenuBar(menuBar);
@@ -42,10 +49,21 @@ public class ListagemDeVendas implements ActionListener{
         menuBar.add(fileMenu);
 
         fileMenu.add(backItem);
-        fileMenu.add(sair);
+        fileMenu.add(exitItem);
 
         backItem.addActionListener(this);
-        sair.addActionListener(this); 
+        exitItem.addActionListener(this); 
+
+        //LABEL
+        label.setBounds(250, 11, 450, 49);
+        label.setText("LISTA DE VENDAS");
+        label.setFont(new Font("Consolas",Font.BOLD,35));
+        label.setForeground(Color.BLACK);
+
+        label2.setBounds(55,105,250,57);
+        label2.setText("ESCOLHA A OPCAO:");
+        label2.setFont(new Font("Consolas",Font.BOLD,25));
+        label2.setForeground(Color.BLACK);        
 
         //COMBO BOX
         opcoes[0] = "Todos";
@@ -53,7 +71,7 @@ public class ListagemDeVendas implements ActionListener{
             opcoes[z] = funcionarioVendedor.getNome(z-1);
         }
         comboBox = new JComboBox<String>(opcoes);
-        comboBox.setBounds(300, 49, 230, 57);
+        comboBox.setBounds(320, 100, 230, 57);
         comboBox.setForeground(Color.BLACK);
         comboBox.setFont(new Font("Consolas",Font.BOLD,25));
         comboBox.addActionListener(this);
@@ -79,6 +97,8 @@ public class ListagemDeVendas implements ActionListener{
         frame.setLocationRelativeTo(null);
         frame.add(comboBox);
         frame.add(scroll);
+        frame.add(label);
+        frame.add(label2);
     }
 
     @Override
@@ -88,9 +108,9 @@ public class ListagemDeVendas implements ActionListener{
             MenuDeListagem.retornarParaMenuDeListagem();
         }
 
-        if(e.getSource()==sair){
+        if(e.getSource()==exitItem){
             frame.dispose();
-            System.exit(0);
+            MenuPrincipal.retornarParaMenu();
         }
         if(e.getSource()==comboBox){
             int escolha = comboBox.getSelectedIndex();

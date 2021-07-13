@@ -19,19 +19,18 @@ public class BoasVindas implements ActionListener {
         ImageIcon labelImage = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 1000.png");
         //LABEL
         label.setText("Seja Bem Vindo");
-        label.setFont(new Font("BankGothic Md BT",Font.BOLD,80));
+        label.setFont(new Font("BankGothic Md BT",Font.BOLD,60));
         label.setVerticalTextPosition(JLabel.TOP);
         label.setHorizontalTextPosition(JLabel.CENTER);
-        label.setBorder(BorderFactory.createLineBorder(Color.BLACK,2));
         label.setIcon(labelImage);
-        label.setForeground(Color.white);
-        label.setIconTextGap(-105);
+        label.setForeground(Color.WHITE);
+        label.setIconTextGap(-80);
         label.setVisible(true);
-        label.setBounds(0,0,1000,1000);
+        label.setBounds(0,0,700,700);
         label.add(button);
 
         //BUTTON
-        button.setBounds(350,900,300,50);
+        button.setBounds(200,580,300,50);
         button.setText("Aperte aqui para iniciar!");
         button.setFocusable(false);
         button.setVerticalTextPosition(JButton.CENTER);
@@ -46,7 +45,7 @@ public class BoasVindas implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setTitle("Lojas EG - Controle de Estoque");
-        frame.setSize(1000,1000);
+        frame.setSize(700,700);
         frame.setIconImage(logoIcon.getImage());
         frame.setLayout(null);
         frame.add(label);

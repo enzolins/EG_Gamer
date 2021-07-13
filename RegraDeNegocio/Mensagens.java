@@ -10,4 +10,6 @@ public abstract class Mensagens {
     static void erroQuantidade(){};
 
     static void erroPreco(){};
+
+    static void erroRepetido(){};
 }

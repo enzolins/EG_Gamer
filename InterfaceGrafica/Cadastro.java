@@ -18,13 +18,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-import RegraDeNegocio.ListarProdutos;
-import RegraDeNegocio.MostrarMensagens;
-import RegraDeNegocio.Produtos;
 import Arquivos.Salvar;
 import Exceptions.NomeInvalido;
 import Exceptions.PrecoInvalido;
 import Exceptions.QuantidadeInvalida;
+import RegraDeNegocio.ListarProdutos;
+import RegraDeNegocio.MostrarMensagens;
+import RegraDeNegocio.Produtos;
 
 
 public class Cadastro implements ActionListener {
@@ -48,8 +48,7 @@ public class Cadastro implements ActionListener {
    private JMenu fileMenu = new JMenu("Arquivo");
    private JMenu programMenu = new JMenu("Programa");
    private JMenuItem backItem = new JMenuItem("Voltar");
-   private JMenuItem exiItem = new JMenuItem("Sair");
-   private JMenuItem loadItem = new JMenuItem("Carregar");
+   private JMenuItem exiItem = new JMenuItem("Sair para Menu");
    private JMenuItem saveItem = new JMenuItem("Salvar");
    private Produtos produto = MenuPrincipal.retornarProduto();
    private ListarProdutos lista = new ListarProdutos();
@@ -67,18 +66,15 @@ public class Cadastro implements ActionListener {
         menuBar.add(programMenu);
         menuBar.setFocusable(false);
 
-        fileMenu.add(loadItem);
         fileMenu.add(saveItem);
 
         programMenu.add(backItem);
         programMenu.add(exiItem);
         
-        loadItem.addActionListener(this);
         saveItem.addActionListener(this);
         backItem.addActionListener(this);
         exiItem.addActionListener(this);
 
-        loadItem.setMnemonic(KeyEvent.VK_C);
         saveItem.setMnemonic(KeyEvent.VK_S);
         backItem.setMnemonic(KeyEvent.VK_V);
         exiItem.setMnemonic(KeyEvent.VK_S);
@@ -101,7 +97,7 @@ public class Cadastro implements ActionListener {
         button2.setFocusable(false);
         
         //TEXT FIELD 1
-        text.setBounds(170, 60, 175, 49);
+        text.setBounds(170, 60, 500, 49);
         text.setFont(new Font("Consolas",Font.PLAIN,35));
         text.setForeground(Color.BLACK);
         text.setBackground(Color.WHITE);
@@ -152,10 +148,10 @@ public class Cadastro implements ActionListener {
         label4.setBounds(10, 240, 150, 49);     
 
         //LABEL 5
-        label5.setText("CADASTRO");
+        label5.setText("CADASTRO DE PRODUTOS");
         label5.setForeground(Color.black);
         label5.setFont(new Font("Consolas",Font.BOLD,35));
-        label5.setBounds(351, 11, 175, 49);
+        label5.setBounds(300, 11, 400, 49);
 
         //TEXT AREA
         textArea.setForeground(Color.BLACK);
@@ -174,7 +170,7 @@ public class Cadastro implements ActionListener {
         //FRAME
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.setTitle("Lojas EG - Controle de Estoque");
+        frame.setTitle("Lojas EG - Cadastrar Produtos");
         frame.setSize(900,700);
         frame.setIconImage(logoIcon.getImage());
         frame.setLayout(null);
@@ -231,11 +227,7 @@ public class Cadastro implements ActionListener {
             lista.listarTodos();
             textArea.append(lista.getSaida());
         }
-        if(e.getSource()==loadItem){
-            System.out.println("CARREGANDO!!!");
-        }
         if(e.getSource()==saveItem){
-            System.out.println("SALVANDO!!!");
             try {
                 Salvar.salvarProdutos();
                 Salvar.salvarPreco();
@@ -247,10 +239,11 @@ public class Cadastro implements ActionListener {
         }
         if(e.getSource()==backItem){
            frame.dispose();
-           MenuPrincipal.retornarParaMenu();
+           MenuDeCadastro.retornarParaMenuDeCadastro();
         }
         if(e.getSource()==exiItem){
-            System.exit(0);
+            frame.dispose();
+            MenuPrincipal.retornarParaMenu();
          }
         
     }

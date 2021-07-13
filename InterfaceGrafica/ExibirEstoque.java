@@ -2,14 +2,15 @@ package InterfaceGrafica;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import RegraDeNegocio.ListarProdutos;
 import Arquivos.Salvar;
+import RegraDeNegocio.ListarProdutos;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -25,14 +26,15 @@ public class ExibirEstoque implements ActionListener{
     private JMenu fileMenu = new JMenu("Arquivo");
     private JMenu programMenu = new JMenu("Programa");
     private JMenuItem backItem = new JMenuItem("Voltar");
-    private JMenuItem exiItem = new JMenuItem("Sair");
-    private JMenuItem loadItem = new JMenuItem("Carregar");
+    private JMenuItem exiItem = new JMenuItem("Sair para Menu");
     private JMenuItem saveItem = new JMenuItem("Salvar");
     private ListarProdutos lista = new ListarProdutos();
+    private JLabel label = new JLabel();
+    private JLabel label2 = new JLabel();
 
     ExibirEstoque(){
         //ICONS
-        ImageIcon logoIcon = new ImageIcon("Icones" + System.getProperty("file.separator")+"EG Logo Official 2000.png");
+        ImageIcon logoIcon = new ImageIcon("Icones"+ System.getProperty("file.separator")+"EG Logo Official 2000.png");
 
         //TEXT AREA
         textArea.setForeground(Color.BLACK);
@@ -53,18 +55,15 @@ public class ExibirEstoque implements ActionListener{
         menuBar.add(programMenu);
         menuBar.setFocusable(false);
 
-        fileMenu.add(loadItem);
         fileMenu.add(saveItem);
 
         programMenu.add(backItem);
         programMenu.add(exiItem);
         
-        loadItem.addActionListener(this);
         saveItem.addActionListener(this);
         backItem.addActionListener(this);
         exiItem.addActionListener(this);
 
-        loadItem.setMnemonic(KeyEvent.VK_C);
         saveItem.setMnemonic(KeyEvent.VK_S);
         backItem.setMnemonic(KeyEvent.VK_V);
         exiItem.setMnemonic(KeyEvent.VK_S);
@@ -73,8 +72,19 @@ public class ExibirEstoque implements ActionListener{
         programMenu.setMnemonic(KeyEvent.VK_P);
 
 
+        //LABEL
+        label.setBounds(250, 11, 450, 49);
+        label.setText("LISTA DE PRODUTOS");
+        label.setFont(new Font("Consolas",Font.BOLD,35));
+        label.setForeground(Color.BLACK);
+
+        label2.setBounds(55,105,250,57);
+        label2.setText("ESCOLHA A OPCAO:");
+        label2.setFont(new Font("Consolas",Font.BOLD,25));
+        label2.setForeground(Color.BLACK);
+
         //COMBO BOX
-        comboBox.setBounds(300, 49, 230, 57);
+        comboBox.setBounds(320, 100, 230, 57);
         comboBox.setForeground(Color.BLACK);
         comboBox.setFont(new Font("Consolas",Font.BOLD,25));
         comboBox.addActionListener(this);
@@ -82,7 +92,7 @@ public class ExibirEstoque implements ActionListener{
         //FRAME
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        frame.setTitle("Lojas EG - Controle de Estoque");
+        frame.setTitle("Lojas EG - Listagem de Estoque");
         frame.setSize(900,700);
         frame.setIconImage(logoIcon.getImage());
         frame.setLayout(null);
@@ -90,15 +100,14 @@ public class ExibirEstoque implements ActionListener{
         frame.setLocationRelativeTo(null);
         frame.add(scroll);
         frame.add(comboBox);
+        frame.add(label);
+        frame.add(label2);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==loadItem){
-            System.out.println("CARREGANDO!!!");
-        }
+
         if(e.getSource()==saveItem){
-            System.out.println("SALVANDO!!!");
             try {
                 Salvar.salvarProdutos();
                 Salvar.salvarPreco();
@@ -113,7 +122,8 @@ public class ExibirEstoque implements ActionListener{
            MenuDeListagem.retornarParaMenuDeListagem();
         }
         if(e.getSource()==exiItem){
-            System.exit(0);
+            frame.dispose();
+            MenuPrincipal.retornarParaMenu();
          }
 
         if(e.getSource()==comboBox){
@@ -143,4 +153,3 @@ public class ExibirEstoque implements ActionListener{
 
 
 }
-

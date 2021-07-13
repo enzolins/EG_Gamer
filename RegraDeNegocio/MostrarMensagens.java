@@ -23,4 +23,8 @@ public class MostrarMensagens extends Mensagens {
     public static void erroQuantidade(){
         JOptionPane.showMessageDialog(null,"A quantidade digitada e invalida!"+"\n"+"Por favor, digite novamente","Erro",JOptionPane.ERROR_MESSAGE);
     }
+
+    public static void erroRepetido(){
+        JOptionPane.showMessageDialog(null,"Ja cadastrado!"+"\n"+"Tente novamente","Erro",JOptionPane.ERROR_MESSAGE);
+    }
 }
