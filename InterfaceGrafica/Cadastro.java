@@ -68,6 +68,7 @@ public class Cadastro implements ActionListener {
 
         fileMenu.add(saveItem);
 
+
         programMenu.add(backItem);
         programMenu.add(exiItem);
         
@@ -193,12 +194,23 @@ public class Cadastro implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==button){
+            int repetido = 0;
             String nome = text.getText();
             double valor = Double.parseDouble(text2.getText());
             int quantidade = Integer.parseInt(text3.getText());
             String categoria = comboBox.getSelectedItem().toString();
             try {
-                produto.cadastrarProduto(nome, valor, quantidade, categoria);
+                for(int y=0;y<produto.getSize();y++){
+                    if(produto.getNome(y).equals(nome)){
+                        repetido += 1;
+                    }
+                }
+                if(repetido==0){
+                    produto.cadastrarProduto(nome, valor, quantidade, categoria);
+                }
+                else{
+                    MostrarMensagens.erroRepetido();
+                }
                 text.setText("");
                 text2.setText("");
                 text3.setText("");

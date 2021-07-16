@@ -175,11 +175,22 @@ public class CadastroDeVendedores implements ActionListener {
        
 
         if (e.getSource() == button){
+            int repetido = 0;
             String nome = text1.getText();
             int idade = Integer.parseInt(text2.getText());
             String sexo = String.valueOf(comboBox.getSelectedItem());
             try {
-                funcionarioVendedor.cadastrarVendedor(nome, idade, sexo);
+                for(int y=0;y<funcionarioVendedor.getSize();y++){
+                    if(funcionarioVendedor.getNome(y).equals(nome)){
+                        repetido += 1;
+                    }
+                }
+                if(repetido==0){
+                    funcionarioVendedor.cadastrarVendedor(nome, idade, sexo);
+                }
+                else{
+                    MostrarMensagens.erroRepetido();
+                }
                 text1.setText("");
                 text2.setText("");
             } catch (NomeInvalido e1) {

@@ -34,6 +34,7 @@ public class Clientela implements ActionListener {
     private JLabel label2 = new JLabel();
     private JLabel label3 = new JLabel();
     private JLabel label4 = new JLabel();
+    private JLabel label5 = new JLabel();
     private JTextField text1 = new JTextField();
     private JTextField text2 = new JTextField();
     private JTextField text3 = new JTextField();
@@ -74,36 +75,42 @@ public class Clientela implements ActionListener {
         label1.setText("Nome");
         label1.setForeground(Color.black);
         label1.setFont(new Font("Consolas",Font.PLAIN,25));
-        label1.setBounds(10,10,150,49);
+        label1.setBounds(10,70,150,49);
         
         //LABEL 2
         label2.setText("Idade");
         label2.setForeground(Color.black);
         label2.setFont(new Font("Consolas",Font.PLAIN,25));
-        label2.setBounds(10,70,150,49);
+        label2.setBounds(10,125,150,49);
 
         //LABEL 3
         label3.setText("Sexo");
         label3.setForeground(Color.black);
         label3.setFont(new Font("Consolas",Font.PLAIN,25));
-        label3.setBounds(10,130,150,49);
+        label3.setBounds(10,180,150,49);
 
         //LABEL 4
         label4.setText("Excluir clientes");
         label4.setForeground(Color.black);
         label4.setFont(new Font("Consolas",Font.PLAIN,25));
-        label4.setBounds(10,550,600,49);
+        label4.setBounds(10,580,600,49);
+
+        //LABEL 5
+        label5.setText("CADASTRO DE CLIENTES");
+        label5.setForeground(Color.black);
+        label5.setFont(new Font("Consolas",Font.BOLD,35));
+        label5.setBounds(250, 11, 450, 49);   
         
 
         //TEXT FIELD 1 
-        text1.setBounds(150,10,500,49);
+        text1.setBounds(150,70,500,49);
         text1.setFont(new Font("Consolas",Font.PLAIN,25));
         text1.setForeground(Color.BLACK);
         text1.setBackground(Color.WHITE);
         text1.setCaretColor(Color.BLACK);
 
         //TEXT FIELD 2
-        text2.setBounds(150,70,50,49);
+        text2.setBounds(150,125,50,49);
         text2.setFont(new Font("Consolas",Font.PLAIN,25));
         text2.setForeground(Color.BLACK);
         text2.setBackground(Color.WHITE);
@@ -111,21 +118,21 @@ public class Clientela implements ActionListener {
 
 
         //BUTTON 1
-        button.setBounds(180,190,113,49);
+        button.setBounds(180,240,113,49);
         button.setText("Cadastrar");
         button.setFont(new Font("Consolas",Font.PLAIN,15));
         button.addActionListener(this);
         button.setFocusable(false);
 
         //BUTTON 2
-        button2.setBounds(10,250,113,49);
+        button2.setBounds(10,300,113,49);
         button2.setText("Listar");
         button2.setFont(new Font("Consolas",Font.PLAIN,15));
         button2.addActionListener(this);
         button2.setFocusable(false);
 
         //BUTTON 3
-        button3.setBounds(300,550,170,49);
+        button3.setBounds(300,580,170,49);
         button3.setText("Excluir");
         button3.setFont(new Font("Consolas",Font.PLAIN,15));
         button3.addActionListener(this);
@@ -141,13 +148,13 @@ public class Clientela implements ActionListener {
         scroll.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         scroll.setViewportView(textArea);
         scroll.setVisible(true);
-        scroll.setBounds(150,310,730,200);
+        scroll.setBounds(150,360,730,200);
 
         //COMBO BOX 1 
         genero[0]= "Masculino";
         genero[1]= "Feminino";
         comboBox = new JComboBox<String>(genero);
-        comboBox.setBounds(150,130,175,49);
+        comboBox.setBounds(150,180,175,49);
         comboBox.setVisible(true);
         comboBox.setFont(new Font("Consolas",Font.PLAIN,15));
         comboBox.addActionListener(this);
@@ -168,6 +175,7 @@ public class Clientela implements ActionListener {
         frame.add(label2);
         frame.add(label3);
         frame.add(label4);
+        frame.add(label5);
         frame.add(text1);
         frame.add(text2);
         frame.add(text3);
@@ -180,11 +188,22 @@ public class Clientela implements ActionListener {
     public void actionPerformed(ActionEvent e) {
        
             if (e.getSource() == button){
+                int repetido = 0;
                 String nome = text1.getText();
                 int idade = Integer.parseInt(text2.getText());
                 String sexo = String.valueOf(comboBox.getSelectedItem());
                 try {
-                    cliente.cadastroCliente(nome,idade,sexo);
+                    for(int y=0;y<cliente.getSize();y++){
+                        if(cliente.getNome(y).equals(nome)){
+                            repetido += 1;
+                        }
+                    }
+                    if(repetido==0){
+                        cliente.cadastroCliente(nome,idade,sexo);
+                    }
+                    else{
+                        MostrarMensagens.erroRepetido();
+                    }
                     text1.setText("");
                     text2.setText("");  
                 } catch (NomeInvalido e1) {
