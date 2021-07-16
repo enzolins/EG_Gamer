@@ -1,4 +1,4 @@
-0, vendeu Controle para o cliente Guilherme
-0, vendeu Mesa para o cliente Guilherme
-2, vendeu Teclado para o cliente Enzo
-2, vendeu Cadeira para o cliente Enzo
+0, vendeu Core i9 11900K para o cliente Enzo Gabriel Souza Lins
+1, vendeu Chave de Ativacao Windows 10 PRO para o cliente Guilherme Santana Teles de Oliveira
+2, vendeu Mouse Redragon 16000DPI para o cliente Enzo Gabriel Souza Lins
+3, vendeu Teclado Mecanico Trust  para o cliente Guilherme Santana Teles de Oliveira

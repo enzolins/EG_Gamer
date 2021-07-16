@@ -1,4 +1,4 @@
-0, comprou Controle com o vendedor Filiphe
-0, comprou Mesa com o vendedor Filiphe
-1, comprou Teclado com o vendedor Juliana
-1, comprou Cadeira com o vendedor Juliana
+1, comprou Core i9 11900K com o vendedor Luiz Filiphe Silva Souza
+0, comprou Chave de Ativacao Windows 10 PRO com o vendedor Marcelo Henrique de Oliveira Cruz
+1, comprou Mouse Redragon 16000DPI com o vendedor Adrielly Costa dos Santos
+0, comprou Teclado Mecanico Trust  com o vendedor Juliana Almeida de Lira Lins
