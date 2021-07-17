@@ -83,7 +83,7 @@ public class Vender implements ActionListener{
         programMenu.setMnemonic(KeyEvent.VK_P);        
 
         //BUTTONS
-        button1.setBounds(166,413,152,42);
+        button1.setBounds(400,413,152,42);
         button1.setFocusable(false);
         button1.setFont(new Font(null,Font.BOLD,20));
         button1.setText("Vender");
@@ -95,7 +95,7 @@ public class Vender implements ActionListener{
             itens[i] = produto.getNome(i);
         }
         comboBoxProduto = new JComboBox<String>(itens);
-        comboBoxProduto.setBounds(166,150,152,42);
+        comboBoxProduto.setBounds(332,150,316,42);
         comboBoxProduto.setVisible(true);
         comboBoxProduto.setFont(new Font(null,Font.BOLD,15));
         comboBoxProduto.addActionListener(this);
@@ -110,7 +110,7 @@ public class Vender implements ActionListener{
             }  
         }
         comboBoxCliente = new JComboBox<String>(clientes);
-        comboBoxCliente.setBounds(322,150,152,42);
+        comboBoxCliente.setBounds(658,150,316,42);
         comboBoxCliente.setVisible(true);
         comboBoxCliente.setFont(new Font(null,Font.BOLD,15));
         comboBoxCliente.addActionListener(this);
@@ -121,56 +121,56 @@ public class Vender implements ActionListener{
             vendedores[i] = funcionarioVendedor.getNome(i);
         }
         comboBoxVendedor = new JComboBox<String>(vendedores);
-        comboBoxVendedor.setBounds(10,150,152,42);
+        comboBoxVendedor.setBounds(10,150,312,42);
         comboBoxVendedor.setVisible(true);
         comboBoxVendedor.setFont(new Font(null,Font.BOLD,15));
         comboBoxVendedor.addActionListener(this);        
 
         //TEXT PANES
-        paneValor.setBounds(10, 297, 200, 60);
+        paneValor.setBounds(196, 297, 200, 60);
         paneValor.setFont(new Font(null,Font.BOLD,25));
         paneValor.setEditable(false);
-        paneQuantidade.setBounds(274, 297, 200, 60);
+        paneQuantidade.setBounds(556, 297, 200, 60);
         paneQuantidade.setFont(new Font(null,Font.BOLD,25));
         paneQuantidade.setEditable(false);
 
         //LABEL
-        label.setBounds(10,490,464,60);
+        label.setBounds(240,490,464,60);
         label.setFont(new Font(null,Font.BOLD,35));
         label.setVisible(false);
         label.setHorizontalAlignment(JLabel.CENTER);
 
         labelComboboxProduto.setText("Produto");
-        labelComboboxProduto.setBounds(166,103,152,36);
+        labelComboboxProduto.setBounds(431,103,152,36);
         labelComboboxProduto.setFont(new Font(null,Font.BOLD,15));
         labelComboboxProduto.setHorizontalAlignment(JLabel.CENTER);
         labelComboboxProduto.setForeground(Color.BLACK);
 
         labelComboboxCliente.setText("Cliente");
-        labelComboboxCliente.setBounds(322,103,152,36);
+        labelComboboxCliente.setBounds(731,103,152,36);
         labelComboboxCliente.setFont(new Font(null,Font.BOLD,15));
         labelComboboxCliente.setHorizontalAlignment(JLabel.CENTER);
         labelComboboxCliente.setForeground(Color.BLACK);
 
         labelComboboxVendedor.setText("Vendedor");
-        labelComboboxVendedor.setBounds(10,103,152,36);
+        labelComboboxVendedor.setBounds(103,103,152,36);
         labelComboboxVendedor.setFont(new Font(null,Font.BOLD,15));
         labelComboboxVendedor.setHorizontalAlignment(JLabel.CENTER);
         labelComboboxVendedor.setForeground(Color.BLACK);
 
         labelPreco.setText("Preco");
-        labelPreco.setBounds(10,237,200,49);
+        labelPreco.setBounds(196,237,200,49);
         labelPreco.setFont(new Font(null,Font.BOLD,15));
         labelPreco.setHorizontalAlignment(JLabel.CENTER);
         labelPreco.setForeground(Color.BLACK);
 
         labelQuantidade.setText("Quantidade");
-        labelQuantidade.setBounds(274,237,200,49);
+        labelQuantidade.setBounds(556,237,200,49);
         labelQuantidade.setFont(new Font(null,Font.BOLD,15));
         labelQuantidade.setHorizontalAlignment(JLabel.CENTER);
         labelQuantidade.setForeground(Color.BLACK);
 
-        labelTitulo.setBounds(84,11,375,60);
+        labelTitulo.setBounds(320,11,375,60);
         labelTitulo.setText("VENDA DE PRODUTOS");
         labelTitulo.setFont(new Font("Consolas",Font.BOLD,35));
         labelTitulo.setForeground(Color.BLACK);
@@ -181,7 +181,7 @@ public class Vender implements ActionListener{
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
         frame.setTitle("Lojas EG - Vender");
-        frame.setSize(500,600);
+        frame.setSize(1000,600);
         frame.setIconImage(logoIcon.getImage());
         frame.setLayout(null);
         frame.setVisible(true);

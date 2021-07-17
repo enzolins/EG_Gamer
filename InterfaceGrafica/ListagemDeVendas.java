@@ -60,10 +60,10 @@ public class ListagemDeVendas implements ActionListener{
         label.setFont(new Font("Consolas",Font.BOLD,35));
         label.setForeground(Color.BLACK);
 
-        label2.setBounds(55,105,250,57);
+        label2.setBounds(10,105,250,57);
         label2.setText("ESCOLHA A OPCAO:");
         label2.setFont(new Font("Consolas",Font.BOLD,25));
-        label2.setForeground(Color.BLACK);        
+        label2.setForeground(Color.BLACK);       
 
         //COMBO BOX
         opcoes[0] = "Todos";
@@ -71,7 +71,7 @@ public class ListagemDeVendas implements ActionListener{
             opcoes[z] = funcionarioVendedor.getNome(z-1);
         }
         comboBox = new JComboBox<String>(opcoes);
-        comboBox.setBounds(320, 100, 230, 57);
+        comboBox.setBounds(275, 100, 550, 57);        
         comboBox.setForeground(Color.BLACK);
         comboBox.setFont(new Font("Consolas",Font.BOLD,25));
         comboBox.addActionListener(this);
